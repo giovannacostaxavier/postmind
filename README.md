@@ -39,7 +39,7 @@ Escreve o tema, escolhe o tom e carrega em **Gerar**. Em segundos tens o texto, 
 
 | | |
 |---|---|
-| **Três fontes** | Escreve a partir de um **tema** («lançámos um chatbot para restaurantes»), de um **link** de notícia ou artigo, ou de um **documento** (PDF, TXT, MD). |
+| **Três fontes** | Escreve a partir de um **tema** , de um **link** de notícia ou artigo, ou de um **documento** (PDF, TXT, MD). |
 | **Três tons** | **Profissional**, **Descontraído** ou **Inspirador**. |
 | **3 versões de uma vez** | A IA escreve três abordagens em paralelo — **História**, **Direto** e **Em lista** — e escolhes a melhor. |
 | **Escrita em direto** | O texto aparece palavra a palavra na pré-visualização, enquanto a IA escreve. |
