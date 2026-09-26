@@ -1,0 +1,1583 @@
+/* ---------- Colour tokens (light mode; dark.css overrides them) ---------- */
+:root {
+  --pm-bg: #f4f2ee;
+  --pm-card: #ffffff;
+  --pm-nav: #ffffff;
+  --pm-border: #dfdeda;
+  --pm-line: #e8e8e8;
+  --pm-text: #191919;
+  --pm-muted: #666666;
+  --pm-blue: #0a66c2;
+  --pm-blue-hover: #004182;
+  --pm-blue-soft: #e8f3ff;
+  --pm-on-blue: #ffffff;
+  --pm-input: #ffffff;
+  --pm-skeleton: #eeeeee;
+  --pm-skeleton-shine: #f6f6f6;
+  --pm-ok: #057642;
+  --pm-ok-soft: #e6f4ea;
+  --pm-warn: #b24020;
+  --pm-warn-soft: #fcefe9;
+  --pm-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* ---------- Streamlit base ---------- */
+header[data-testid="stHeader"],
+footer,
+#MainMenu {
+  display: none !important;
+}
+
+html,
+body,
+.stApp,
+[data-testid="stAppViewContainer"] {
+  background: var(--pm-bg) !important;
+  color: var(--pm-text);
+}
+
+.stApp p,
+.stApp label,
+.stApp [data-testid="stMarkdownContainer"] {
+  color: inherit;
+}
+
+.block-container,
+[data-testid="stMainBlockContainer"] {
+  max-width: 1160px !important;
+  padding-top: 80px !important;
+  padding-bottom: 48px !important;
+}
+
+.pm-icon {
+  font-family: "Material Symbols Rounded";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+}
+
+/* ---------- Widgets ---------- */
+[data-testid="stTextAreaRootElement"] {
+  background: var(--pm-input) !important;
+  border-color: var(--pm-border) !important;
+  border-radius: 12px !important;
+}
+
+[data-testid="stTextAreaRootElement"]:focus-within {
+  border-color: var(--pm-blue) !important;
+}
+
+.stTextArea textarea {
+  background: var(--pm-input) !important;
+  color: var(--pm-text) !important;
+  caret-color: var(--pm-text);
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+
+.stTextArea textarea::placeholder {
+  color: var(--pm-muted) !important;
+  opacity: 1;
+}
+
+button[data-variant="segmented_control"] {
+  background: var(--pm-card) !important;
+  color: var(--pm-text) !important;
+  border-color: var(--pm-border) !important;
+}
+
+button[data-variant="segmented_control"]:hover {
+  color: var(--pm-blue) !important;
+}
+
+button[data-variant="segmented_control"][aria-checked="true"] {
+  background: var(--pm-blue-soft) !important;
+  color: var(--pm-blue) !important;
+  border-color: var(--pm-blue) !important;
+  font-weight: 600;
+}
+
+[role="tab"] {
+  color: var(--pm-muted) !important;
+  background: transparent !important;
+}
+
+[role="tab"][aria-selected="true"] {
+  color: var(--pm-blue) !important;
+}
+
+[data-baseweb="tab-highlight"] {
+  background: var(--pm-blue) !important;
+}
+
+[data-baseweb="tab-border"] {
+  background: var(--pm-line) !important;
+}
+
+/* LinkedIn pill buttons */
+.stButton button,
+.stLinkButton a,
+#copy-post {
+  border-radius: 999px !important;
+  font-weight: 600 !important;
+  min-height: 40px;
+}
+
+.stButton button[kind="primary"],
+#copy-post {
+  background: var(--pm-blue) !important;
+  border: 1px solid var(--pm-blue) !important;
+  color: var(--pm-on-blue) !important;
+}
+
+.stButton button[kind="primary"]:hover,
+#copy-post:hover {
+  background: var(--pm-blue-hover) !important;
+  border-color: var(--pm-blue-hover) !important;
+}
+
+.stButton button[kind="primary"] p {
+  color: var(--pm-on-blue) !important;
+}
+
+.stLinkButton a {
+  border: 1px solid var(--pm-blue) !important;
+  color: var(--pm-blue) !important;
+  background: transparent !important;
+}
+
+.stLinkButton a:hover {
+  background: var(--pm-blue-soft) !important;
+  box-shadow: inset 0 0 0 1px var(--pm-blue);
+}
+
+.stLinkButton a p {
+  color: var(--pm-blue) !important;
+}
+
+#copy-post {
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  font-size: 15px;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ---------- Top navigation bar ---------- */
+.pm-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: var(--pm-nav);
+  border-bottom: 1px solid var(--pm-line);
+  z-index: 999;
+}
+
+.pm-nav-inner {
+  max-width: 1128px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pm-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--pm-text);
+}
+
+.pm-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  background: var(--pm-blue);
+  color: var(--pm-on-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.pm-beta {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--pm-blue);
+  background: var(--pm-blue-soft);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+/* Nav actions (login / user + theme), pinned inside the nav bar */
+.st-key-nav_actions {
+  position: fixed !important;
+  top: 9px;
+  right: max(16px, calc((100vw - 1128px) / 2 + 16px));
+  width: auto !important;
+  z-index: 1000;
+}
+
+.st-key-nav_actions .stButton button[kind] {
+  min-height: 38px !important;
+  padding: 0 14px !important;
+}
+
+.st-key-theme .stButton button[kind] {
+  border: 1px solid var(--pm-border) !important;
+  background: var(--pm-card) !important;
+  color: var(--pm-text) !important;
+}
+
+.st-key-theme .stButton button[kind]:hover {
+  border-color: var(--pm-blue) !important;
+  color: var(--pm-blue) !important;
+}
+
+.st-key-theme .stButton button[kind] p,
+.st-key-logout .stButton button[kind] p {
+  color: inherit !important;
+  font-size: 13px;
+}
+
+.st-key-sign_in .stButton button[kind] {
+  background: transparent !important;
+  border: 1px solid var(--pm-blue) !important;
+}
+
+.st-key-sign_in .stButton button[kind] p {
+  color: var(--pm-blue) !important;
+}
+
+.st-key-sign_in .stButton button[kind]:hover {
+  background: var(--pm-blue-soft) !important;
+}
+
+.st-key-sign_up .stButton button[kind] {
+  background: var(--pm-blue) !important;
+  border: 1px solid var(--pm-blue) !important;
+}
+
+.st-key-sign_up .stButton button[kind] p {
+  color: var(--pm-on-blue) !important;
+}
+
+.st-key-sign_up .stButton button[kind]:hover {
+  background: var(--pm-blue-hover) !important;
+  border-color: var(--pm-blue-hover) !important;
+}
+
+.st-key-logout .stButton button[kind] {
+  color: var(--pm-muted) !important;
+}
+
+.st-key-logout .stButton button[kind]:hover {
+  color: var(--pm-blue) !important;
+}
+
+.pm-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pm-text);
+  white-space: nowrap;
+}
+
+.pm-user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: linear-gradient(135deg, #0a66c2, #70b5f9);
+  color: #ffffff;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Login dialog ---------- */
+div[role="dialog"] {
+  background: var(--pm-card) !important;
+  color: var(--pm-text) !important;
+  border: 1px solid var(--pm-border);
+  border-radius: 14px !important;
+}
+
+div[role="dialog"] button[aria-label="Close"] {
+  color: var(--pm-muted) !important;
+}
+
+.pm-login-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.pm-login-head b {
+  display: block;
+  font-size: 17px;
+  color: var(--pm-text);
+}
+
+.pm-login-head small {
+  font-size: 13px;
+  color: var(--pm-muted);
+}
+
+.st-key-login_google .stButton button[kind],
+.st-key-login_linkedin .stButton button[kind] {
+  min-height: 46px !important;
+  gap: 10px;
+}
+
+.st-key-login_google .stButton button[kind] {
+  background: #ffffff !important;
+  border: 1px solid #dadce0 !important;
+}
+
+.st-key-login_google .stButton button[kind] p {
+  color: #1f1f1f !important;
+}
+
+.st-key-login_google .stButton button[kind]::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23FFC107' d='M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z'/%3E%3Cpath fill='%23FF3D00' d='M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z'/%3E%3Cpath fill='%234CAF50' d='M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z'/%3E%3Cpath fill='%231976D2' d='M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.st-key-login_linkedin .stButton button[kind] {
+  background: #0a66c2 !important;
+  border: 1px solid #0a66c2 !important;
+}
+
+.st-key-login_linkedin .stButton button[kind]:hover {
+  background: #004182 !important;
+}
+
+.st-key-login_linkedin .stButton button[kind] p {
+  color: #ffffff !important;
+}
+
+.st-key-login_linkedin .stButton button[kind]::before {
+  content: "in";
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  background: #ffffff;
+  color: #0a66c2;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.pm-login-foot {
+  font-size: 12px;
+  color: var(--pm-muted);
+  text-align: center;
+  line-height: 1.5;
+}
+
+img.li-avatar {
+  object-fit: cover;
+}
+
+/* ---------- Cards ---------- */
+.pm-card,
+.st-key-composer,
+.st-key-tools,
+.st-key-preview,
+.st-key-ideas,
+.st-key-drafts {
+  background: var(--pm-card);
+  border: 1px solid var(--pm-border);
+  border-radius: 10px;
+  box-shadow: var(--pm-shadow);
+}
+
+.st-key-composer,
+.st-key-tools,
+.st-key-preview,
+.st-key-ideas,
+.st-key-drafts {
+  padding: 16px;
+}
+
+.pm-card {
+  padding: 16px;
+  margin-bottom: 8px;
+}
+
+.pm-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--pm-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pm-card-title .pm-icon {
+  color: var(--pm-blue);
+}
+
+.pm-card-sub {
+  font-size: 12px;
+  color: var(--pm-muted);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+/* ---------- Center: composer ---------- */
+.pm-composer-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pm-badge-icon {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--pm-blue-soft);
+  color: var(--pm-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pm-badge-icon .pm-icon {
+  font-size: 26px;
+}
+
+.pm-composer-title {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--pm-text);
+}
+
+.pm-composer-sub,
+.pm-hint {
+  font-size: 13px;
+  color: var(--pm-muted);
+}
+
+.pm-hint {
+  font-size: 12px;
+}
+
+.pm-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pm-muted);
+  margin-bottom: -6px;
+}
+
+/* ---------- Divider "Pré-visualização" ---------- */
+.pm-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--pm-muted);
+  margin: 4px 0 -4px;
+}
+
+.pm-divider::before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--pm-border);
+}
+
+.pm-divider b {
+  color: var(--pm-text);
+}
+
+/* ---------- Post preview (LinkedIn look) ---------- */
+.li-post-header {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.li-avatar {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0a66c2, #70b5f9);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.li-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pm-text);
+}
+
+.li-degree {
+  font-weight: 400;
+  color: var(--pm-muted);
+}
+
+.li-headline,
+.li-meta {
+  font-size: 12px;
+  color: var(--pm-muted);
+  line-height: 1.35;
+}
+
+.li-meta .pm-icon {
+  font-size: 14px;
+}
+
+.li-follow {
+  margin-left: auto;
+  color: var(--pm-blue);
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.li-more-toggle {
+  display: none;
+}
+
+.li-text {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--pm-text);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.li-text.clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.li-more-toggle:checked + .li-text.clamp {
+  display: block;
+}
+
+.li-more {
+  display: block;
+  text-align: right;
+  color: var(--pm-muted);
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.li-more:hover {
+  color: var(--pm-blue);
+  text-decoration: underline;
+}
+
+.li-more-toggle:checked ~ .li-more {
+  display: none;
+}
+
+.hashtag {
+  color: var(--pm-blue);
+  font-weight: 600;
+}
+
+.li-reactions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--pm-line);
+  font-size: 12px;
+  color: var(--pm-muted);
+}
+
+.li-bubbles {
+  display: flex;
+}
+
+.li-bubbles span {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--pm-card);
+  margin-left: -4px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.li-bubbles span:first-child {
+  margin-left: 0;
+  background: #378fe9;
+}
+
+.li-bubbles span:nth-child(2) {
+  background: #df704d;
+}
+
+.li-bubbles span:nth-child(3) {
+  background: #6dae4f;
+}
+
+.li-right {
+  margin-left: auto;
+}
+
+.pm-counter {
+  font-size: 12px;
+  color: var(--pm-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pm-counter-bar {
+  flex: 1;
+  height: 4px;
+  background: var(--pm-line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.pm-counter-bar div {
+  height: 100%;
+  background: var(--pm-blue);
+}
+
+.pm-counter-bar div.over {
+  background: #cc1016;
+}
+
+/* ---------- Empty state (skeleton) ---------- */
+.pm-skeleton {
+  display: flex;
+  gap: 8px;
+}
+
+.pm-skel-circle {
+  flex: 0 0 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--pm-skeleton);
+}
+
+.pm-skel-lines {
+  flex: 1;
+}
+
+.pm-skel-line {
+  height: 10px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--pm-skeleton) 25%, var(--pm-skeleton-shine) 50%, var(--pm-skeleton) 75%);
+  background-size: 200% 100%;
+  animation: pm-shimmer 1.6s infinite;
+  margin: 8px 0;
+}
+
+@keyframes pm-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+.pm-empty-text {
+  text-align: center;
+  color: var(--pm-muted);
+  font-size: 14px;
+  padding: 18px 0 6px;
+}
+
+/* ---------- Right: ideas card ---------- */
+.st-key-ideas {
+  gap: 0 !important;
+}
+
+.st-key-ideas .stButton {
+  border-bottom: 1px solid var(--pm-line);
+  padding: 4px 0;
+}
+
+.st-key-ideas .stButton:last-of-type {
+  border-bottom: none;
+}
+
+.st-key-ideas .stButton button {
+  justify-content: flex-start;
+  text-align: left;
+  min-height: 0;
+  padding: 6px 0 !important;
+  color: var(--pm-text) !important;
+  font-weight: 500 !important;
+  font-size: 14px;
+}
+
+.st-key-ideas .stButton button p {
+  color: inherit !important;
+}
+
+.st-key-ideas .stButton button [data-testid="stIconMaterial"],
+.st-key-ideas .stButton button span[class*="Icon"] {
+  color: var(--pm-blue) !important;
+}
+
+.st-key-ideas .stButton button:hover {
+  color: var(--pm-blue) !important;
+}
+
+.pm-ideas-head {
+  margin-bottom: 6px;
+}
+
+.pm-footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--pm-muted);
+  padding: 16px 8px;
+  line-height: 1.8;
+}
+
+.pm-footer b {
+  color: var(--pm-blue);
+}
+
+/* ---------- Fixes ---------- */
+[role="tab"] p {
+  color: inherit !important;
+}
+
+/* ---------- Media card ---------- */
+[data-testid="stTextInputRootElement"] {
+  background: var(--pm-input) !important;
+  border-color: var(--pm-border) !important;
+  border-radius: 12px !important;
+}
+
+[data-testid="stTextInputRootElement"]:focus-within {
+  border-color: var(--pm-blue) !important;
+}
+
+.stTextInput input {
+  background: var(--pm-input) !important;
+  color: var(--pm-text) !important;
+  caret-color: var(--pm-text);
+}
+
+.stTextInput input::placeholder {
+  color: var(--pm-muted) !important;
+  opacity: 1;
+}
+
+[data-testid="stFileUploaderDropzone"] {
+  background: var(--pm-input) !important;
+  border: 1.5px dashed var(--pm-border) !important;
+  border-radius: 12px !important;
+}
+
+[data-testid="stFileUploaderDropzone"]:hover {
+  border-color: var(--pm-blue) !important;
+}
+
+[data-testid="stFileUploaderDropzone"] *,
+[data-testid="stFileUploaderFile"] * {
+  color: var(--pm-muted) !important;
+}
+
+[data-testid="stFileUploaderDropzoneInstructions"] > div > span {
+  font-size: 0 !important;
+}
+
+[data-testid="stFileUploaderDropzoneInstructions"] > div > span::before {
+  content: "Imagem ou vídeo · até 200 MB";
+  font-size: 12px;
+}
+
+[data-testid="stFileUploaderDropzone"] button {
+  border-radius: 999px !important;
+  border: 1px solid var(--pm-blue) !important;
+  background: transparent !important;
+}
+
+[data-testid="stFileUploaderDropzone"] button *,
+[data-testid="stFileUploaderDropzone"] button p::after {
+  color: var(--pm-blue) !important;
+}
+
+[data-testid="stFileUploaderDropzone"] button p {
+  font-size: 0 !important;
+}
+
+[data-testid="stFileUploaderDropzone"] button p::after {
+  content: "Escolher ficheiro";
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.stButton button[kind="secondary"],
+.stDownloadButton button {
+  border: 1px solid var(--pm-blue) !important;
+  color: var(--pm-blue) !important;
+  background: transparent !important;
+  border-radius: 999px !important;
+  font-weight: 600 !important;
+  min-height: 40px;
+}
+
+.stButton button[kind="secondary"]:hover,
+.stDownloadButton button:hover {
+  background: var(--pm-blue-soft) !important;
+}
+
+.stButton button[kind="secondary"] p,
+.stDownloadButton button p {
+  color: var(--pm-blue) !important;
+}
+
+.st-key-media_actions {
+  margin-top: -6px;
+}
+
+.st-key-media_actions button[kind] {
+  border: none !important;
+  background: transparent !important;
+  color: var(--pm-muted) !important;
+  min-height: 32px !important;
+  padding: 4px 0 !important;
+  font-weight: 600 !important;
+}
+
+.st-key-media_actions button[kind]:hover {
+  color: var(--pm-blue) !important;
+  background: transparent !important;
+}
+
+.st-key-media_actions [data-testid="stColumn"]:last-child button[kind]:hover {
+  color: var(--pm-warn) !important;
+}
+
+.st-key-media_actions button[kind] p {
+  color: inherit !important;
+  font-size: 13px;
+}
+
+.pm-media-ready {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--pm-text);
+}
+
+.pm-media-ready > .pm-icon {
+  color: var(--pm-ok);
+  font-size: 24px;
+}
+
+.pm-media-ready b {
+  display: block;
+  font-weight: 600;
+}
+
+.pm-media-ready small {
+  color: var(--pm-muted);
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.pm-hint .pm-icon {
+  font-size: 16px;
+  color: var(--pm-blue);
+}
+
+.st-key-preview [data-testid="stImage"] img,
+.st-key-preview video {
+  border-radius: 8px;
+}
+
+/* ---------- Email sign-in / sign-up form ---------- */
+.pm-or {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--pm-muted);
+  margin: 4px 0;
+}
+
+.pm-or::before,
+.pm-or::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--pm-line);
+}
+
+div[role="dialog"] label,
+div[role="dialog"] label p {
+  color: var(--pm-text) !important;
+  font-weight: 600;
+}
+
+.stFormSubmitButton button {
+  border-radius: 999px !important;
+  min-height: 44px;
+  background: var(--pm-blue) !important;
+  border: 1px solid var(--pm-blue) !important;
+}
+
+.stFormSubmitButton button:hover {
+  background: var(--pm-blue-hover) !important;
+  border-color: var(--pm-blue-hover) !important;
+}
+
+.stFormSubmitButton button p {
+  color: var(--pm-on-blue) !important;
+  font-weight: 600;
+}
+
+[data-testid="stTextInputRootElement"] button {
+  color: var(--pm-muted) !important;
+  background: transparent !important;
+}
+
+/* ---------- Left: quick AI tools ---------- */
+.st-key-tools .stButton button[kind] {
+  justify-content: flex-start;
+  min-height: 40px !important;
+  padding: 0 12px !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--pm-border) !important;
+  background: var(--pm-card) !important;
+  font-weight: 500 !important;
+}
+
+.st-key-tools .stButton button[kind] p {
+  color: var(--pm-text) !important;
+  font-size: 13px;
+}
+
+.st-key-tools .stButton button[kind] [data-testid="stIconMaterial"] {
+  color: var(--pm-blue) !important;
+}
+
+.st-key-tools .stButton button[kind]:hover:not(:disabled) {
+  border-color: var(--pm-blue) !important;
+  background: var(--pm-blue-soft) !important;
+}
+
+.st-key-tools .stButton button[kind]:disabled {
+  opacity: 0.45;
+}
+
+.st-key-tools .st-key-undo .stButton button[kind] {
+  border: none !important;
+  background: transparent !important;
+  justify-content: flex-end;
+  min-height: 32px !important;
+  padding: 0 !important;
+}
+
+.st-key-tools .st-key-undo .stButton button[kind] p {
+  color: var(--pm-muted) !important;
+}
+
+.st-key-tools .st-key-undo .stButton button[kind]:hover p {
+  color: var(--pm-blue) !important;
+}
+
+.pm-tool-status {
+  font-size: 12px;
+  color: var(--pm-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pm-tool-status .pm-icon {
+  font-size: 16px;
+  color: var(--pm-ok);
+}
+
+.st-key-tools [data-testid="stVerticalBlock"],
+.st-key-tools {
+  gap: 0.45rem !important;
+}
+
+.st-key-tools .stButton button[kind] > div,
+.st-key-tools .stButton button[kind] > div > span {
+  justify-content: flex-start !important;
+  width: 100%;
+}
+
+.st-key-tools .st-key-undo .stButton button[kind] > div,
+.st-key-tools .st-key-undo .stButton button[kind] > div > span {
+  justify-content: flex-end !important;
+}
+
+/* ---------- Version picker ---------- */
+.st-key-version_picker .pm-label {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.st-key-version_picker .pm-label .pm-icon {
+  font-size: 18px;
+  color: var(--pm-blue);
+}
+
+[data-testid="stCheckbox"] label p {
+  color: var(--pm-text) !important;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ---------- Help popover ("?" next to "3 versões") ---------- */
+.st-key-versions_help button {
+  min-height: 28px !important;
+  padding: 0 4px !important;
+  border: none !important;
+  background: transparent !important;
+  color: var(--pm-muted) !important;
+}
+
+.st-key-versions_help button:hover {
+  color: var(--pm-blue) !important;
+}
+
+.st-key-versions_help button [data-testid="stIconMaterial"] {
+  font-size: 18px;
+}
+
+[data-testid="stPopoverBody"] {
+  background: var(--pm-card) !important;
+  border: 1px solid var(--pm-border) !important;
+  color: var(--pm-text) !important;
+  max-width: 300px;
+}
+
+.pm-help {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--pm-text);
+}
+
+.pm-help b {
+  font-weight: 600;
+}
+
+.pm-help p {
+  margin: 6px 0;
+  color: var(--pm-muted);
+}
+
+.pm-help ul {
+  margin: 4px 0;
+  padding-left: 18px;
+}
+
+.st-key-versions_help button > div > div[aria-hidden="true"] {
+  display: none !important;
+}
+
+.pm-help p,
+.pm-help li {
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+.pm-help b {
+  font-size: 13px !important;
+}
+
+/* ---------- Image editing under the preview image ---------- */
+.st-key-image_edit {
+  background: var(--pm-bg);
+  border: 1px solid var(--pm-line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  gap: 0.5rem !important;
+}
+
+.st-key-image_edit .pm-label {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.st-key-image_edit .pm-label .pm-icon {
+  font-size: 18px;
+  color: var(--pm-blue);
+}
+
+.st-key-image_chips {
+  flex-wrap: wrap;
+}
+
+.st-key-image_chips .stButton button[kind] {
+  min-height: 30px !important;
+  padding: 0 12px !important;
+  border: 1px solid var(--pm-border) !important;
+  background: var(--pm-card) !important;
+}
+
+.st-key-image_chips .stButton button[kind] p {
+  color: var(--pm-text) !important;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.st-key-image_chips .stButton button[kind]:hover {
+  border-color: var(--pm-blue) !important;
+}
+
+.st-key-image_chips .stButton button[kind]:hover p {
+  color: var(--pm-blue) !important;
+}
+
+.st-key-image_edit .stFormSubmitButton button {
+  min-height: 40px;
+}
+
+.st-key-undo_image .stButton button[kind] {
+  justify-content: flex-end;
+}
+
+.st-key-undo_image .stButton button[kind] p {
+  color: var(--pm-muted) !important;
+  font-size: 13px;
+}
+
+/* Hide Streamlit's English "Press Enter to submit form" hint */
+[data-testid="InputInstructions"] {
+  display: none !important;
+}
+
+.st-key-image_chips {
+  row-gap: 6px !important;
+  column-gap: 6px !important;
+}
+
+/* ---------- Live (streaming) post ---------- */
+.pm-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--pm-blue);
+  animation: pm-blink 0.9s steps(2, start) infinite;
+}
+
+@keyframes pm-blink {
+  to { visibility: hidden; }
+}
+
+/* ---------- "ver mais" fold marker (under the editor) ---------- */
+.pm-fold {
+  border: 1px solid var(--pm-line);
+  border-radius: 10px;
+  background: var(--pm-bg);
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+.pm-fold-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--pm-muted);
+  margin-bottom: 6px;
+}
+
+.pm-fold-head .pm-icon {
+  font-size: 17px;
+  color: var(--pm-blue);
+}
+
+.pm-fold-text {
+  white-space: pre-wrap;
+  line-height: 1.45;
+  word-wrap: break-word;
+}
+
+.pm-fold-visible {
+  color: var(--pm-text);
+  background: var(--pm-blue-soft);
+  border-radius: 3px;
+}
+
+.pm-fold-cut {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0 4px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--pm-blue);
+  color: var(--pm-on-blue);
+  font-size: 11px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.pm-fold-cut .pm-icon {
+  font-size: 13px;
+}
+
+.pm-fold-hidden {
+  color: var(--pm-muted);
+  opacity: 0.55;
+}
+
+.pm-fold-hidden .hashtag {
+  color: inherit;
+}
+
+.pm-fold-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.pm-fold-status .pm-icon {
+  font-size: 16px;
+}
+
+.pm-fold-status.ok {
+  color: var(--pm-ok);
+}
+
+.pm-fold-status.warn {
+  color: var(--pm-warn);
+}
+
+/* ---------- Preview bar + device switch ---------- */
+.st-key-preview_bar {
+  gap: 10px !important;
+}
+
+.st-key-preview_bar > div:first-child {
+  flex: 1 1 auto;
+}
+
+.st-key-preview_bar .pm-divider {
+  margin: 0;
+}
+
+.st-key-preview_bar button[data-variant="segmented_control"] {
+  min-height: 30px;
+  padding: 0 10px;
+}
+
+.st-key-preview_bar button[data-variant="segmented_control"] p {
+  font-size: 12px;
+}
+
+/* ---------- Phone frame (real phone size, scrolls inside) ---------- */
+.st-key-phone {
+  width: 360px !important;
+  max-width: 100%;
+  height: 740px !important;
+  min-height: 740px !important;
+  max-height: 740px !important;
+  flex: 0 0 auto !important;
+  margin: 6px auto 10px;
+  padding: 0 !important;
+  gap: 0 !important;
+  border: 10px solid #1b1f23;
+  border-radius: 46px;
+  background: var(--pm-card);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.st-key-phone::-webkit-scrollbar {
+  display: none;
+}
+
+/* status bar + app bar stay on top, bottom nav stays at the bottom */
+.st-key-phone > div:first-child {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+.st-key-phone > div:last-child {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+  margin-top: auto;
+}
+
+.st-key-phone .li-post-header,
+.st-key-phone .li-text,
+.st-key-phone .li-more,
+.st-key-phone .li-reactions,
+.st-key-phone .pm-phone-next {
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
+.st-key-phone .li-post-header {
+  margin-top: 12px;
+}
+
+.st-key-phone [data-testid="stImage"],
+.st-key-phone [data-testid="stImage"] img,
+.st-key-phone video {
+  margin-top: 8px;
+  border-radius: 0 !important;
+}
+
+.st-key-phone .li-reactions {
+  font-size: 11px;
+  border-bottom: none;
+}
+
+.pm-phone-top {
+  background: var(--pm-card);
+  border-bottom: 1px solid var(--pm-line);
+}
+
+.pm-phone-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 22px 4px;
+  font-size: 13px;
+  color: var(--pm-text);
+}
+
+.pm-phone-status .pm-icon {
+  font-size: 15px;
+  margin-left: 3px;
+}
+
+.pm-phone-appbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 10px;
+  color: var(--pm-muted);
+}
+
+.pm-phone-avatar {
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: linear-gradient(135deg, #0a66c2, #70b5f9);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pm-phone-search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 6px;
+  background: var(--pm-blue-soft);
+  font-size: 13px;
+}
+
+.pm-phone-search .pm-icon {
+  font-size: 18px;
+}
+
+.pm-phone-next {
+  margin-top: 6px;
+  padding-top: 14px;
+  border-top: 8px solid var(--pm-bg);
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.pm-phone-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 4px 14px;
+  background: var(--pm-card);
+  border-top: 1px solid var(--pm-line);
+  color: var(--pm-muted);
+}
+
+.pm-phone-nav div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 10px;
+}
+
+.pm-phone-nav .pm-icon {
+  font-size: 22px;
+}
+
+.pm-phone-nav div.active {
+  color: var(--pm-text);
+}
+
+.st-key-preview_bar {
+  flex-wrap: nowrap !important;
+}
+
+.st-key-preview_bar > div:first-child {
+  flex: 1 1 0 !important;
+  min-width: 0;
+  width: auto !important;
+}
+
+.st-key-preview_bar > div:last-child {
+  flex: 0 0 auto !important;
+  width: auto !important;
+}
+
+.st-key-phone [data-testid="stElementToolbar"] {
+  display: none !important;
+}
+
+.st-key-phone .li-reactions {
+  white-space: nowrap;
+  font-size: 10.5px;
+}
+
+/* ---------- Drafts card ---------- */
+.st-key-cookie_jar,
+.st-key-page_language {
+  display: none !important;
+}
+
+.st-key-drafts {
+  margin-top: 8px;
+  gap: 0.3rem !important;
+}
+
+.st-key-new_post .stButton button[kind] {
+  justify-content: flex-end;
+  min-height: 28px !important;
+  padding: 0 !important;
+}
+
+.st-key-new_post .stButton button[kind] p {
+  color: var(--pm-blue) !important;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.pm-drafts-empty {
+  font-size: 12px;
+  color: var(--pm-muted);
+  padding: 8px 0 4px;
+}
+
+[class*="st-key-draft_"] {
+  flex-wrap: nowrap !important;
+  border-radius: 8px;
+  padding: 2px 4px;
+  border-bottom: 1px solid var(--pm-line);
+}
+
+[class*="st-key-draft_"]:last-child {
+  border-bottom: none;
+}
+
+[class*="st-key-draft_"][class*="_active"] {
+  background: var(--pm-blue-soft);
+  border-bottom-color: transparent;
+}
+
+[class*="st-key-draft_"] > div:first-child {
+  flex: 1 1 0 !important;
+  min-width: 0;
+  width: auto !important;
+}
+
+[class*="st-key-open_draft_"] .stButton button[kind] {
+  justify-content: flex-start;
+  min-height: 34px !important;
+  padding: 0 !important;
+  width: 100%;
+}
+
+[class*="st-key-open_draft_"] .stButton button[kind] p {
+  color: var(--pm-text) !important;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[class*="st-key-open_draft_"] .stButton button[kind] [data-testid="stIconMaterial"] {
+  color: var(--pm-muted) !important;
+  font-size: 16px;
+}
+
+[class*="st-key-open_draft_"] .stButton button[kind]:hover p {
+  color: var(--pm-blue) !important;
+}
+
+[class*="st-key-delete_draft_"] .stButton button[kind] {
+  min-height: 28px !important;
+  padding: 0 4px !important;
+  color: var(--pm-muted) !important;
+}
+
+[class*="st-key-delete_draft_"] .stButton button[kind]:hover {
+  color: var(--pm-warn) !important;
+}

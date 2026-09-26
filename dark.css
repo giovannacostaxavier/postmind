@@ -1,0 +1,22 @@
+/* Dark mode: same tokens as styles.css, LinkedIn-style dark palette */
+:root {
+  --pm-bg: #0b0d10;
+  --pm-card: #1b1f23;
+  --pm-nav: #1b1f23;
+  --pm-border: #2f353b;
+  --pm-line: #2f353b;
+  --pm-text: #e8e9ea;
+  --pm-muted: #a3acb5;
+  --pm-blue: #71b7fb;
+  --pm-blue-hover: #a8d4ff;
+  --pm-blue-soft: #1a2c40;
+  --pm-on-blue: #0b0d10;
+  --pm-input: #15181c;
+  --pm-skeleton: #2a2f35;
+  --pm-skeleton-shine: #353b42;
+  --pm-ok: #7fd49d;
+  --pm-ok-soft: #173524;
+  --pm-warn: #f5a27f;
+  --pm-warn-soft: #3d2419;
+  --pm-shadow: none;
+}

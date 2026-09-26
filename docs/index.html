@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PostMind · Posts para o LinkedIn com IA</title>
+  <meta name="description" content="PostMind escreve posts para o LinkedIn com IA: texto, hashtags e imagem, com pré-visualização igual ao LinkedIn.">
+  <meta property="og:title" content="PostMind · Posts para o LinkedIn com IA">
+  <meta property="og:description" content="Escreve o tema, escolhe o tom e carrega em Gerar. Texto, hashtags e imagem em segundos.">
+  <meta property="og:image" content="screenshots/light.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230A66C2'/><text x='32' y='43' font-family='Arial' font-weight='700' font-size='30' fill='white' text-anchor='middle'>Pm</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL@24,500,0&display=block">
+  <style>
+    :root {
+      --blue: #0A66C2;
+      --blue-dark: #004182;
+      --blue-soft: #E8F1FB;
+      --bg: #F4F2EE;
+      --card: #FFFFFF;
+      --text: #191919;
+      --muted: #5E5E5E;
+      --border: #DFDEDA;
+      --shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --blue: #71B7FB;
+        --blue-dark: #A8D4FF;
+        --blue-soft: #16273A;
+        --bg: #0E1116;
+        --card: #1B1F23;
+        --text: #E9E9E9;
+        --muted: #A7A7A7;
+        --border: #2E3338;
+        --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue); }
+    .icon {
+      font-family: "Material Symbols Rounded";
+      font-size: 22px;
+      line-height: 1;
+      vertical-align: middle;
+      font-feature-settings: "liga";
+    }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; }
+    .logo {
+      display: grid; place-items: center;
+      width: 34px; height: 34px; border-radius: 7px;
+      background: #0A66C2; color: #fff; font-weight: 800; font-size: 16px;
+    }
+    .beta { font-size: 11px; font-weight: 600; color: var(--blue); background: var(--blue-soft); padding: 2px 8px; border-radius: 99px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; border-radius: 99px;
+      font-weight: 600; font-size: 15px; text-decoration: none;
+      border: 1.5px solid var(--blue); color: var(--blue); background: transparent;
+      transition: background .15s, color .15s;
+    }
+    .btn:hover { background: var(--blue-soft); }
+    .btn.primary { background: #0A66C2; border-color: #0A66C2; color: #fff; }
+    .btn.primary:hover { background: #004182; }
+
+    /* Hero */
+    .hero { padding: 72px 16px 40px; text-align: center; }
+    .hero h1 { font-size: clamp(34px, 5.5vw, 58px); line-height: 1.08; letter-spacing: -.02em; margin: 0 0 18px; }
+    .hero h1 em { font-style: normal; color: var(--blue); }
+    .hero p { font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 640px; margin: 0 auto 28px; }
+    .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .shot {
+      margin: 48px auto 0;
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: var(--card);
+    }
+    .shot img { display: block; width: 100%; height: auto; }
+
+    /* Steps */
+    section.wrap { padding: 56px 16px; }
+    h2 { font-size: clamp(26px, 3.5vw, 36px); letter-spacing: -.01em; margin: 0 0 8px; text-align: center; }
+    .lead { text-align: center; color: var(--muted); margin: 0 auto 36px; max-width: 600px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .step { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .step b { display: block; font-size: 18px; margin: 12px 0 4px; }
+    .step p { margin: 0; color: var(--muted); }
+    .num {
+      display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
+      background: var(--blue-soft); color: var(--blue); font-weight: 800;
+    }
+
+    /* Features */
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px;
+    }
+    .card .icon {
+      display: inline-grid; place-items: center; width: 42px; height: 42px; border-radius: 10px;
+      background: var(--blue-soft); color: var(--blue);
+    }
+    .card h3 { margin: 14px 0 6px; font-size: 17px; }
+    .card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    /* Gallery */
+    .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    figure { margin: 0; }
+    figure .shot { margin: 0; }
+    figcaption { text-align: center; color: var(--muted); font-size: 14px; margin-top: 10px; }
+
+    /* Security */
+    .secure {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 32px;
+    }
+    .secure div { display: flex; gap: 12px; align-items: flex-start; }
+    .secure .icon { color: #057642; }
+    .secure p { margin: 0; }
+
+    /* Stack */
+    .stack { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .chip { background: var(--card); border: 1px solid var(--border); border-radius: 99px; padding: 8px 16px; font-weight: 600; font-size: 14px; }
+
+    /* CTA */
+    .cta { text-align: center; background: #0A66C2; color: #fff; border-radius: 16px; padding: 48px 24px; }
+    .cta h2 { color: #fff; }
+    .cta p { color: #DCEBFA; margin: 0 auto 24px; max-width: 520px; }
+    .cta .btn { background: #fff; color: #0A66C2; border-color: #fff; }
+    .cta .btn:hover { background: #E8F1FB; }
+    pre {
+      text-align: left; display: inline-block; max-width: 100%; overflow-x: auto;
+      background: rgba(0,0,0,.25); color: #fff; padding: 14px 18px; border-radius: 10px;
+      font-size: 14px; margin: 0 0 24px;
+    }
+
+    footer { text-align: center; color: var(--muted); font-size: 14px; padding: 40px 0 56px; }
+
+    @media (max-width: 860px) {
+      .steps, .grid { grid-template-columns: 1fr 1fr; }
+      .gallery, .secure { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .steps, .grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 48px; }
+      section.wrap { padding: 40px 16px; }
+      nav .btn span.label { display: none; }
+      .secure { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap">
+      <div class="brand"><div class="logo">Pm</div>PostMind<span class="beta">Beta</span></div>
+      <a class="btn" href="https://github.com/giovannacostaxavier/postmind"><span class="icon">code</span><span class="label">Ver no GitHub</span></a>
+    </div>
+  </nav>
+
+  <header class="hero wrap">
+    <h1>Posts para o LinkedIn,<br><em>escritos com IA</em> em segundos.</h1>
+    <p>Escreve o tema, escolhe o tom e carrega em <b>Gerar</b>. O PostMind devolve o texto, as hashtags e uma imagem feita à medida — com pré-visualização igual ao LinkedIn.</p>
+    <div class="actions">
+      <a class="btn primary" href="#funcionalidades"><span class="icon">auto_awesome</span>Ver funcionalidades</a>
+    </div>
+    <div class="shot"><img src="screenshots/light.png" alt="Ecrã principal do PostMind com um post e uma imagem gerados" width="2880" height="2360"></div>
+  </header>
+
+  <section class="wrap">
+    <h2>Três passos</h2>
+    <p class="lead">Do tema ao post publicado, sem sair do browser.</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><b>Escreve o tema</b><p>Ou cola o link de uma notícia, ou carrega um PDF.</p></div>
+      <div class="step"><div class="num">2</div><b>Escolhe o tom</b><p>Profissional, descontraído ou inspirador — e o estilo da imagem.</p></div>
+      <div class="step"><div class="num">3</div><b>Gera e publica</b><p>Ajusta com um clique, copia e abre o LinkedIn com o texto pronto.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="funcionalidades">
+    <h2>Tudo o que precisas para um bom post</h2>
+    <p class="lead">Pensado para quem quer publicar bem, sem perder tempo.</p>
+    <div class="grid">
+      <div class="card"><span class="icon">edit_note</span><h3>Tema, link ou documento</h3><p>Escreve sobre uma ideia, resume um artigo ou transforma um PDF num post.</p></div>
+      <div class="card"><span class="icon">layers</span><h3>3 versões de uma vez</h3><p>História, direto ou em lista — escritas em paralelo; escolhes a melhor.</p></div>
+      <div class="card"><span class="icon">image</span><h3>Imagem com IA</h3><p>Fotografia, ilustração ou 3D no formato do LinkedIn. Ou anexa a tua imagem ou vídeo.</p></div>
+      <div class="card"><span class="icon">auto_fix_high</span><h3>Ferramentas num clique</h3><p>Mais curto, mais formal, novo gancho, acabar com pergunta, traduzir para inglês — e desfazer.</p></div>
+      <div class="card"><span class="icon">brush</span><h3>Editar a imagem</h3><p>«Mais azul», «minimalista» ou «põe o fundo em Lisboa». A IA ajusta a imagem.</p></div>
+      <div class="card"><span class="icon">smartphone</span><h3>Pré-visualização real</h3><p>Computador e telemóvel, com aviso de onde cai o «…ver mais».</p></div>
+      <div class="card"><span class="icon">content_copy</span><h3>Copiar e publicar</h3><p>Copia o texto ou abre o LinkedIn com o post já preenchido.</p></div>
+      <div class="card"><span class="icon">history</span><h3>Rascunhos automáticos</h3><p>Cada post fica guardado sozinho — no browser ou na tua conta.</p></div>
+      <div class="card"><span class="icon">login</span><h3>Entrar como quiseres</h3><p>Google, LinkedIn ou email e palavra-passe. Ou usa sem conta.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Claro ou escuro, computador ou telemóvel</h2>
+    <p class="lead">Design inspirado no LinkedIn, todo em português de Portugal.</p>
+    <div class="gallery">
+      <figure><div class="shot"><img src="screenshots/dark.png" alt="PostMind em modo escuro" loading="lazy" width="2880" height="2360"></div><figcaption>Modo escuro</figcaption></figure>
+      <figure><div class="shot"><img src="screenshots/phone.png" alt="Pré-visualização do post num telemóvel" loading="lazy" width="2880" height="2360"></div><figcaption>Pré-visualização no telemóvel</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Seguro por defeito</h2>
+    <p class="lead">Pensado para proteger as contas e os dados.</p>
+    <div class="secure">
+      <div><span class="icon">key</span><p><b>Nenhuma chave publicada.</b> As chaves de acesso não fazem parte do projeto publicado.</p></div>
+      <div><span class="icon">lock</span><p><b>Palavras-passe cifradas</b> com scrypt e salt aleatório.</p></div>
+      <div><span class="icon">verified_user</span><p><b>Login com Google e LinkedIn</b> por OpenID Connect.</p></div>
+      <div><span class="icon">person</span><p><b>Rascunhos privados:</b> cada pessoa só vê os seus.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Feito com</h2>
+    <p class="lead">Um projeto simples, só em Python.</p>
+    <div class="stack">
+      <span class="chip">Python 3.12</span>
+      <span class="chip">Streamlit</span>
+      <span class="chip">OpenAI API</span>
+      <span class="chip">SQLite</span>
+      <span class="chip">OpenID Connect</span>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="cta">
+      <h2>Demo interna</h2>
+      <p>O PostMind é um projeto interno. A app não está disponível para uso público — é apresentada ao vivo pela equipa.</p>
+      <a class="btn" href="https://github.com/giovannacostaxavier/postmind"><span class="icon">code</span>Ver o código</a>
+    </div>
+  </section>
+
+  <footer>
+    <b>PostMind</b> © 2026 · Feito com Streamlit e OpenAI · Demo interna
+  </footer>
+</body>
+</html>

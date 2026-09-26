@@ -1,0 +1,23 @@
+# Secrets
+.env
+
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Login secrets (Google / LinkedIn)
+.streamlit/secrets.toml
+
+# Local accounts database
+users.db
+
+# Personal notes and local files for Claude Code
+CLAUDE.md
+.claude/
+
+# Example config files (kept local only)
+.env.example
+.streamlit/secrets.toml.example
